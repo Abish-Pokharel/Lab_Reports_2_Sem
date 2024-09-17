@@ -987,9 +987,8 @@
 //  //                                                LAB - 5
 
 
+
 // // 23. Write a function template called swapValues() that swap the values of two variables of any data type. Demonstrate swapValues() 
-// // on both integer and string data types. 
-// Write a function template called swapValues() that swap the values of two variables of any data type. Demonstrate swapValues() 
 // on both integer and string data types. 
 // #include <iostream>
 // #include <string>
@@ -1306,3 +1305,208 @@
 //     cout << "Division of float datatype is : " << result3 << endl;
 //     return 0;
 // }
+
+
+
+// //                                       LAB - 7
+
+// // 33. WAP to create file name students_records.txt and insert contents to it. 
+// // CONTENT:
+//             RN   NAME    MARKS
+//             1    RAM     30
+//             2    SHYAM   29  
+//             3    SITA    25
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+
+// int main()
+// {
+//     string  content = " RN   NAME    MARKS \n"
+//                       " 1    RAM      30 \n"
+//                       " 2    SHYAM    29 \n"
+//                       " 3    SITA     25 \n";
+
+//     fstream file("students_records.txt", ios :: out );    
+
+//     if(!file.is_open()){
+//         cout << "Error opening file........" << endl;
+//     }
+
+//     file << content ;
+//     file.close();
+//     cout << "Content has been written in the file.......";
+//     return 0;
+// }
+
+
+// // 34. WAP to read contents and display in console from the file "student_records.txt".
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+// int main()
+// {
+//     fstream file("students_records.txt", ios :: in);
+//     if(file.is_open()){
+//         string line;
+//         while(getline(file, line)){
+//             cout << line << endl;
+//         }
+//         file.close();
+//     } else {
+//         cout << "Error opening file........";
+//     }
+//     return 0;
+// }
+
+
+//  // 35. WAP to modify age of SHYAM from 29 to 22 that is available in file student_records.txt.
+// #include<iostream>
+// #include<fstream>
+// #include<string>
+// using namespace std;
+// int main() {
+//     fstream file("students_records.txt", ios::in);
+//     if (!file.is_open()) {
+//         cout << "Error opening file for reading........" << endl;
+//         return 1;
+//     }
+//     string content = "";
+//     string line;
+//     while (getline(file, line)) {
+//         if (line.find("SHYAM") != string::npos) {
+//             line.replace(line.find("29"), 2, "22");
+//         }
+//         content += line + "\n";
+//     }
+//     file.close();
+//     file.open("students_records.txt", ios::out);
+//     if (!file.is_open()) {
+//         cout << "Error opening file for writing........" << endl;
+//         return 1;
+//     }
+
+//     file << content;
+//     file.close();
+
+//     cout << "SHYAM's age has been modified successfully!" << endl;
+//     return 0;
+// }
+
+
+
+
+
+
+// // 36. WAP to append the content in the file named demo.txt.
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+// int main()
+// {
+//     string content = "This is appended content.\n";
+//     fstream file("demo.txt", ios :: app); // open in append mode
+//     if(file.is_open()){
+//         file << content;
+//         file.close();
+//         cout << "Content has been appended to the file.";
+//     } else {
+//         cout << "Error opening file........";
+//     }
+//     return 0;
+// }
+
+
+// // 37. WAP to read contents from file named demo.txt and print number of character available in that file.
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+
+// int main()
+// {
+//     fstream file("demo.txt", ios :: in);
+//     if(file.is_open()){
+//         char ch;
+//         int charCount = 0;
+//         while(file.get(ch)){
+//             charCount++;
+//         }
+//         file.close();
+//         cout << "Number of characters in the file: " << charCount << endl;
+//     } else {
+//         cout << "Error opening file........";
+//     }
+//     return 0;
+// }
+
+// // 38. WAP to read contents from file named demo.txt and print n.o of words and n.o of lines available in that file.
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+
+// int main()
+// {
+//     fstream file("demo.txt", ios :: in);
+//     if(file.is_open()){
+//         string word;
+//         int wordCount = 0;
+//         int lineCount = 0;
+//         while(file >> word){
+//             wordCount++;
+//             if(word[word.length() - 1] == '.'){
+//                 lineCount++;
+//             }
+//         }
+//         file.close();
+//         cout << "Number of words in the file: " << wordCount << endl;
+//         cout << "Number of lines in the file: " << lineCount << endl;
+//     } else {
+//         cout << "Error opening file........";
+//     }
+//     return 0;
+// }
+
+
+// // 39. WAP to create file named file1.txt and file2.txt with some text in those file. Also merge the contents of
+// // those two files into the file named file3.txt.  
+
+// #include<iostream>
+// #include<fstream>
+// using namespace std;
+
+// int main()
+// {
+//     fstream file1("file1.txt", ios :: out);
+//     file1 << "This is the content of file1.txt.";
+//     file1.close();
+//     fstream file2("file2.txt", ios :: out);
+//     file2 << "This is the content of file2.txt.";
+//     file2.close();
+//     fstream file1In("file1.txt", ios :: in);
+//     fstream file2In("file2.txt", ios :: in);
+//     fstream file3Out("file3.txt", ios :: out);
+//     if(file1In.is_open() && file2In.is_open() && file3Out.is_open()){
+//         char ch;
+//         while(file1In.get(ch)){
+//             file3Out << ch;
+//         }
+//         file1In.close();
+
+//         while(file2In.get(ch)){
+//             file3Out << ch;
+//         }
+//         file2In.close();
+
+//         file3Out.close();
+//         cout << "Contents of file1.txt and file2.txt merged into file3.txt.";
+//     } else {
+//         cout << "Error opening file........";
+//     }
+//     return 0;
+// }
+
