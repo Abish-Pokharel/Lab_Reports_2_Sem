@@ -989,7 +989,7 @@ int main() {
 
 
 // 23. Write a function template called swapValues() that swap the values of two variables of any data type. Demonstrate swapValues() 
-on both integer and string data types. 
+// on both integer and string data types. 
 #include <iostream>
 #include <string>
 using namespace std;
@@ -1312,10 +1312,10 @@ int main() {
 
 // 33. WAP to create file name students_records.txt and insert contents to it. 
 // CONTENT:
-            RN   NAME    MARKS
-            1    RAM     30
-            2    SHYAM   29  
-            3    SITA    25
+            // RN   NAME    MARKS
+            // 1    RAM     30
+            // 2    SHYAM   29  
+            // 3    SITA    25
 
 #include<iostream>
 #include<fstream>
@@ -1402,21 +1402,26 @@ int main() {
 
 // 36. WAP to append the content in the file named demo.txt.
 
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
+#include <string>
+
 using namespace std;
-int main()
-{
-    string content = "This is appended content.\n";
-    fstream file("demo.txt", ios :: app); // open in append mode
-    if(file.is_open()){
-        file << content;
-        file.close();
-        cout << "Content has been appended to the file.";
-    } else {
-        cout << "Error opening file........";
-    }
-    return 0;
+
+int main() {
+  ifstream inputFile("students_records.txt");
+  fstream outputFile("demo.txt", ios::app);
+
+  string line;
+  while (getline(inputFile, line)) {
+    outputFile << line << endl; 
+  }
+  inputFile.close();
+  outputFile.close();
+
+  cout << "Content from student_records.txt appended to demo.txt" << endl;
+
+  return 0;
 }
 
 
