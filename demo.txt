@@ -1,4 +1,0 @@
- RN   NAME    MARKS 
- 1    RAM      30 
- 2    SHYAM    29 
- 3    SITA     25 

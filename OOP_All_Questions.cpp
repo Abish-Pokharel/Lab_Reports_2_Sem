@@ -1308,14 +1308,14 @@ int main() {
 
 
 
-//                                       LAB - 7
+// //                                       LAB - 7
 
 // 33. WAP to create file name students_records.txt and insert contents to it. 
-// CONTENT:
-            // RN   NAME    MARKS
-            // 1    RAM     30
-            // 2    SHYAM   29  
-            // 3    SITA    25
+// // CONTENT:
+//             // RN   NAME    MARKS
+//             // 1    RAM     30
+//             // 2    SHYAM   29  
+//             // 3    SITA    25
 
 #include<iostream>
 #include<fstream>
@@ -1405,22 +1405,18 @@ int main() {
 #include <iostream>
 #include <fstream>
 #include <string>
-
 using namespace std;
 
 int main() {
-  ifstream inputFile("students_records.txt");
-  fstream outputFile("demo.txt", ios::app);
-
-  string line;
-  while (getline(inputFile, line)) {
-    outputFile << line << endl; 
-  }
-  inputFile.close();
-  outputFile.close();
-
-  cout << "Content from student_records.txt appended to demo.txt" << endl;
-
+    string content = "This is appended content.";
+    fstream file("demo.txt", ios::app);
+    if (file.is_open()) {
+    file << content;
+    file.close();
+    cout << "Content has been appended to the file demo.txt" << endl;
+    } else {
+        cout << "Error opening file for writing........" << endl;
+    }
   return 0;
 }
 
